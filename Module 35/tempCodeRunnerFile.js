@@ -1,0 +1,1 @@
+const filteredValues = products.filter(product => product.vrand === "apple");
