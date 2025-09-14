@@ -1,0 +1,8 @@
+**React is not a framework..it's a library**
+React vs NextJS:
+1)react is a javascript library which is used for vuilding user interfaces mainly focusing on view layer
+Whereas,NextJS is a full-stack framework vuilt on top of react and provides features like server-side rendering(ssr),ssg(static site generation)
+
+
+***What is component***
+component is a small piece of a wevsite which can ve similar or different to each other and in React every piece of UI is a component and they return jsx(html)...main purpose is to use it multiple times 
