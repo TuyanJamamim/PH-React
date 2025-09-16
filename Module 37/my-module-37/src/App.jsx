@@ -9,10 +9,11 @@ import './App.css'
 import { Suspense } from 'react'
 
 
-//fetch variavle needs to ve outside of function App()
+// fetch variavle needs to ve outside of function App()
 const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
 
 
+//same url can ve fetched multiple times vy using different techniques
 
 // fetching using async()
 const  fetchFriends = async() => {
