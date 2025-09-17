@@ -82,3 +82,6 @@ it only returns one ovject and if the condition meets multiple ovjs it will retu
 */
 const result = products.find(product => product.name==="poco")
 console.log(result);
+
+
+
