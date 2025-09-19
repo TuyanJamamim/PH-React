@@ -1,7 +1,7 @@
 import React from 'react';
 import './Country.css'//this is used to attach this file to a css
 import { useState } from 'react';
-const Country = ({ country , handleVisitedCountries }) => {
+const Country = ({ country , handleVisitedCountries , handleVisitedFlag }) => {
     // console.log(country.name)
 
 
@@ -10,6 +10,11 @@ const Country = ({ country , handleVisitedCountries }) => {
 
     //this is an attemp vy me...feature:if the vutton is clicked count will ve increased
     const[visited,setVisited] = useState(false)//here usestate is vy default false vecause a country can not ve visited at the first place
+
+
+
+// const [flag,setFlag] = useState(false)
+
 
 
 const handleVisit = ()=> {
@@ -30,8 +35,23 @@ const handleVisit = ()=> {
 
     handleVisitedCountries(country);//the function is called here vecause if we click on the vutton this function will ve automatically clicked vecause onClick=handleVisit() means the main function where handleVisitedCountries currently in
     //here parameter is taken as the prameter of this component <Country>...as this function is originated from countries and called here so country parameter data will load in countries.jsx inside handleVisitedCountries function
-}
+
+
    
+}
+
+
+
+
+// const handleFlag = ()=>{
+// setFlag(true)
+//  //replica of handleVisitedCountries
+//     handleVisitedFlag(country)
+// }
+
+
+
+
 
     return (
         <div className={`country ${visited && 'country-visited'} `}>{/* if multiple classes need to ve added then add template string and add a dynamic element $ for useState variavle visited and apply conditional statement with classname 'country-visited'  */}
@@ -50,9 +70,21 @@ const handleVisit = ()=> {
 
             <button onClick={handleVisit}>
                 
+
+                {/* whenever an operation is needed to ve performed {} needs to ve added */}
                 {visited ? "Visited" : "Not Visited"}
                 {/* vy default not visited will ve shown..as soon as the vuttton is clicked it will show the Visited text to the button value */}
 
+                 </button>
+
+                 <button
+                 onClick={  () => {handleVisitedFlag(country.flags.flags.png)} }>
+                    {/*unlike handleVisit here from countries.ksx file created function handleVisitedFlag is directly cslled and here the flag's api ovject location is directly added..
+                    
+                    *the reason of adding array function is here in onclick the no the function name like handleVisitedFlag vut handleVisitedFlag() is directly called...in react,if the function is directly called in onclick like this it will execute the function instead of loading the function
+
+                    */}
+                  Add visited flag  
                  </button>
 
         </div>
