@@ -1,7 +1,8 @@
 import React, { use } from 'react';
-import userImg from '../../assets/user-1.png'//in image src direct link can ve used also the importing like this will work 
-import flagImg from '../../assets/report-1.png'
-const AvailavlePlayers = ({ fetchPlayers }) => {
+
+
+import PlayerCard from './PlayerCard';
+const AvailavlePlayers = ({ fetchPlayers, setAvailavleValance, availavleValance}) => {
     const playersData = use(fetchPlayers);
     
     // const {player_image, player_name,player_country, role, batting_style, bowling_style, price, rating} = playersData;//destructuring of object from json file
@@ -17,46 +18,15 @@ const AvailavlePlayers = ({ fetchPlayers }) => {
             
 
 {
-    playersData.map(player => 
+    playersData.map(player => <PlayerCard 
+        availavleValance ={availavleValance}
+        setAvailavleValance= {setAvailavleValance} player={player}></PlayerCard>//here playerCard a seperate component is created for each card...here setAvailavleValance,availavleValance are passed as props to the playerCard component and imported from app.jsx useState
         // console.log(player);
-<div className="card bg-base-100 shadow-sm p-4">
-                <figure>
-                    <img className='w-full h-[300px] '
-                        src={player.player_image}
-                        alt="player" />
-                </figure>
-                <div className="mt-4">
-                    <div className='flex'>
-                        <img src={userImg} alt="" />
-                        <h2 className="card-title ml-2">{player.player_name}</h2>
-                    </div>
-                    <div className='flex justify-between mt-4 border-b-1 pb-4'>
-                        {/* vorder vottom(border-b) adds a line under the section */}
-                        <div className='flex'>
-                            <img className='w-[20px] h-[20px]' src={flagImg} alt="" />
-                            <span>{player.player_country}</span>
-                        </div>
-                        <button className='btn'>{player.playing_role}</button>
-                        {/* here I added daisyUI classname btn vy myslef...btn adds vutton properties  */}
-                    </div>
 
-                    <div className='flex justify-between mt-4'>
-                        <span>Rating </span>
-                        <span>{player.rating}</span>
-                    </div>
-                    <div className='flex justify-between mt-4'>
-                        <span>{player.bating_style}</span>
-                        <span>{player.bowling_style}</span>
-                    </div>
+//we want to add functionality to the vutton choose player for all cards thats why here that functionality is added..that vutton is here
 
 
 
-                    <div className="card-actions flex justify-between mt-4 items-center">
-                        <p>Price: {player.price}</p>
-                        <button className="btn">Choose Player</button>
-                    </div>
-                </div>
-            </div>
 
 
         

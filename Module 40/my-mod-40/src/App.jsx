@@ -1,11 +1,10 @@
 import { Suspense, useState } from 'react'
 
-import navImg from './assets/logo.png'//navVar left....the image is inside asset and asset is inside src that's why ./ had worked..if It was in another folder then ../needs to ve added
-//here navImg is the image variavle 
-import dolImg from './assets/dollar-1.jpeg'
+
 import './App.css'
 import AvailavlePlayers from './components/availavlePlayers/availavlePlayers'
 import SelectedPlayers from './slelectedPlayers/selectedPlayers'
+import NavBar from './components/availavlePlayers/NavBar/NavBar'
 
 const fetchPlayers = fetch('../public/players/players.json').then(res => res.json())
 
@@ -24,29 +23,19 @@ function App() {
 
   // const [count, setCount] = useState(0)
 // const playerPromise = fetchPlayers();
+
+const [availavleValance , setAvailavleValance] = useState(6000000000);//initial valance is 6000000000
+//this state is for the valance in the navVar
+//setAvailavleValance is passed as props to the availavlePlayers component and then to the playerCard component and in the playerCard component it is used in the onClick function of the vutton choose player
+
+
   return (
     <>
-
-      <div className="navbar max-w-[1200px] mx-auto">
-        {/* this is to put the navVar at center  */}
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">
+<NavBar availavleValance={availavleValance}></NavBar>
+{/* completely different component for NavVar */}
 
 
-            {/* navVar left side image */}
-            <img className='w-[60px] h-[60px]' src={navImg} alt="" />{/* here tailwind css is used */}
-
-          </a>
-        </div>
-        <div className="flex items-center">
-          {/* removed the vutton from original daisyUI */}
-          {/* new span tag is added to design according to the sample */}
-          <span className='mr-1'> 6000000000 </span>
-          <span className='mr-1'> Coin </span>
-          <img className='w-[60px] h-[60px] ml-2' src={dolImg} alt="" />
-
-        </div>
-      </div> {/* a good practice is to take different components <> for different  */}
+    {/* a good practice is to take different components <> for different  */}
 
       {/* availavle players
       .....different component
@@ -83,7 +72,9 @@ function App() {
   toggle ? <Suspense fallback={<div>Loading....</div>}>
 
 
-<AvailavlePlayers fetchPlayers={fetchPlayers}></AvailavlePlayers>
+<AvailavlePlayers fetchPlayers={fetchPlayers} 
+availavleValance={availavleValance}
+setAvailavleValance={setAvailavleValance}></AvailavlePlayers>
 
 </Suspense>
 :  /* selected players
