@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import flagImg from '../../assets/report-1.png'
 import userImg from '../../assets/user-1.png'//in image src direct link can ve used also the importing like this will work
+import { toast } from 'react-toastify';
 
 
 //here palyer is imported from availavlePlayers.jsx and it is the map variavle of playersData array
-const PlayerCard = ({ player, setAvailavleValance, availavleValance }) => {
+const PlayerCard = ({ player, setAvailavleValance, availavleValance, purchasedPlayers, setPurchasedPlayers }) => {
 
     const [isSelected, setIsSelected] = useState(false);
 
@@ -24,11 +25,19 @@ const PlayerCard = ({ player, setAvailavleValance, availavleValance }) => {
 
             if (availavleValance < playerPrice) {
 
-                alert("Not enough balance to select this player");
+                toast("Not enough balance to select this player");//here toast is added after stup in app.jsx file 
                 return;//here the function needs to ve terminated if the condition is met
             }
+            // here this c onditional statement is added to check if selected players crossed 6 or not..if it it selects six then the function will ve terminated and toast will ve shown
+            if(purchasedPlayers.length === 6){
+
+                toast("You can select maximum 6 players");
+                return;
+            }
             setIsSelected(true)
-            setAvailavleValance(availavleValance - playerPrice)
+            setAvailavleValance(availavleValance - playerPrice);
+
+            setPurchasedPlayers([...purchasedPlayers, playerData])//here the exexption from vottle project is there the maping variavle and it's functionality was inside it's core component vut here the there's a differnt component for maping through the json array....thats why the ...(spread operator) array value set is done here and it is declared in app.jsx vecause it is a common parent component for both availavlePlayers and selectedPlayers components 
 
 
         }
