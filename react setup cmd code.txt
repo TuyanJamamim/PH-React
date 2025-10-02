@@ -10,3 +10,6 @@ import tailwindcss from '@tailwindcss/vite'
 daisyUi:
 npm i -D daisyui@latest(at cmd)
 and at app.jsx for daisyUi:@plugin "daisyui";
+
+rechart:
+npm install recharts
