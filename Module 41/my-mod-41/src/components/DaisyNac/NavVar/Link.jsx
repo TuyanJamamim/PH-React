@@ -1,5 +1,5 @@
 import React from 'react';
-// this component is created only to generate links for <a> tag
+// this component is created only to generate links for <a> tag..repeatation of same code in navVar vut here it is in a separate component 
 const Link = ({route}) => {
     return (
        <li>
