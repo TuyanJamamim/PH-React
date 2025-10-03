@@ -1,15 +1,27 @@
-# npm 7+, extra double-dash is needed:
-npm create vite@latest my-vue-app -- --template vue
+# react npm:
+npm create vite@latest my-mod-4 -- --template react
 
 tailwind vite:
 npm install tailwindcss @tailwindcss/vite
 
-at vite.config:
-import tailwindcss from '@tailwindcss/vite'
+at vite.config: 
+ export default defineConfig({
+  plugins: [react() , tailwindcss()],
+})  -->  
+at app.css: @import "tailwindcss";
 
 daisyUi:
-npm i -D daisyui@latest(at cmd)
-and at app.jsx for daisyUi:@plugin "daisyui";
+npm i -D daisyui@latest
+
+at app.css for daisyUi:
+@plugin "daisyui";
+
+Lucide:
+
+
 
 rechart:
 npm install recharts
+
+React Router:
+npm i react-router
