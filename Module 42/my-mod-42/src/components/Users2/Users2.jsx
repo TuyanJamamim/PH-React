@@ -6,7 +6,7 @@ const Users2 = ({userPromise}) => {
     console.log( 'user 2 data' , users);
     return (
         <div>
-            
+            <h2>This is user2</h2>
         </div>
     );
 };

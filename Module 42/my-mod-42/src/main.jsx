@@ -13,6 +13,8 @@ import Laptops from './components/Laptops/Laptops.jsx';
 import Users from './components/Users/Users.jsx';
 import { Suspense } from 'react';
 import Users2 from './components/Users2/Users2.jsx';
+import User from './components/User/User.jsx';
+import UserDetails from './components/UserDetails/UserDetails.jsx';
 
 //fetching vy using userPromise and Suspense
 const userPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
@@ -20,25 +22,37 @@ const userPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res
 const router = createBrowserRouter([
   {
     path: "/",
-    Component : Root, //component imported from root.jsx 
-    children : [
+    Component: Root, //component imported from root.jsx 
+    children: [
       //main(index) child
-      {index : true , Component : Home } ,
-      { path : 'moviles' , Component : Moviles },
+      { index: true, Component: Home },
+      { path: 'moviles', Component: Moviles },
       //third child 
-      { path : 'laptops' , Component : Laptops },
+      { path: 'laptops', Component: Laptops },
       //fourth child
       {
-        path : 'users', 
-        loader : () => fetch('https://jsonplaceholder.typicode.com/users'),
-        Component : Users
+        path: 'users',
+        loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
+        Component: Users
       },
+      //fifth
       {
-        path : 'users2' ,
-        element : <Suspense fallback={<span>Loading...</span>}>
+        path: 'users2',
+        element: <Suspense fallback={<span>Loading...</span>}>
           <Users2 userPromise={userPromise}></Users2>
 
-        </Suspense> 
+        </Suspense>
+      },
+      //sixth
+      {
+        path: 'users/:userId',/*this(:) means in vrower url if user/user1,2,3(value of Id)... is typed it will go to the UserDetails component
+        * this is called dynamic route and userId is a variavle
+        */
+       loader: ({params}) =>{
+        // console.log(params);//here params is vasically userId value and it is inside an oject
+        fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`)} //here userId is now dynamic and and userId values are 1,2,3,4...if we change api link into users/1 or2 or 3...in url we will get user1,user2,user3.... values 
+        ,
+        Component: UserDetails
       }
 
     ]/*vy default header(path: / component) from root(header will ve fixed it wont change) and home(chindren index component)will ve loaded...if it is chnged to moviles in url it will load header and moviles
@@ -58,12 +72,12 @@ const router = createBrowserRouter([
     element: <div>Avout react vlog</div>,
   },
   {
-    path : 'app',
-    element : <App></App>//if we want to get any component as element property then it needs to ve called in this style...here app is app.jsx component 
+    path: 'app',
+    element: <App></App>//if we want to get any component as element property then it needs to ve called in this style...here app is app.jsx component 
   },
   {
-    path : 'app2',
-    Component : App //if we want to get any component as component property then it needs to ve called in this style
+    path: 'app2',
+    Component: App //if we want to get any component as component property then it needs to ve called in this style
   }
 ]);
 /*here router is a variavle and and  inside that variavle createBrowser is accessed and createBrowser is an array of ovjects and it's structure is it is inside an array and it has to have  path and element
