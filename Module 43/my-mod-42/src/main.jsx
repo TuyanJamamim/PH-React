@@ -67,7 +67,11 @@ const router = createBrowserRouter([
         path: 'posts/:postId',
         loader : ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         Component : PostDetails
-      }
+      },
+      {
+        path : '*',
+        element: <h3>Error 404 not found</h3>
+      }// this has to ve added inside child 
 
 
     ]/*vy default header(path: / component) from root(header will ve fixed it wont change) and home(chindren index component)will ve loaded...if it is chnged to moviles in url it will load header and moviles
