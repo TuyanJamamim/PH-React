@@ -25,6 +25,7 @@ const Header = () => {
                 <NavLink className='mr-2.5' to="/laptops">Laptops</NavLink>
                 <NavLink className='mr-2.5' to="/users">Users</NavLink>
                 <NavLink className='mr-2.5' to="/users2">Users2</NavLink>
+                <NavLink className='mr-2.5' to="/posts">Posts</NavLink>
                 {/* NavLink is also a router class which shows the active element means if Home is clicked it shows the home is active..  
                 *we will mostly use NavLink
                 */}

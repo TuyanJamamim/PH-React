@@ -15,6 +15,9 @@ import { Suspense } from 'react';
 import Users2 from './components/Users2/Users2.jsx';
 import User from './components/User/User.jsx';
 import UserDetails from './components/UserDetails/UserDetails.jsx';
+import Posts from './components/Posts/Posts.jsx';
+import PostDetails from './components/PostDetails/PostDetails.jsx';
+import Post from './components/Post/Post.jsx';
 
 //fetching vy using userPromise and Suspense
 const userPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
@@ -53,7 +56,19 @@ const router = createBrowserRouter([
         fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`)} //here userId is now dynamic and and userId values are 1,2,3,4...if we change api link into users/1 or2 or 3...in url we will get user1,user2,user3.... values 
         ,
         Component: UserDetails
+      },
+
+      {
+        path: 'posts',
+        loader : () => fetch('https://jsonplaceholder.typicode.com/posts'),
+        Component : Posts
+      },
+      {
+        path: 'posts/:postId',
+        loader : ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        Component : PostDetails
       }
+
 
     ]/*vy default header(path: / component) from root(header will ve fixed it wont change) and home(chindren index component)will ve loaded...if it is chnged to moviles in url it will load header and moviles
 
